@@ -73,9 +73,9 @@ E.g. HDFS location = events/2016/02/14 , Hive partition = 2016-02-14
 
 <p>
 * (5.1) Select top 10  most frequently purchased categories
-
+<p>
 * (5.2) Select top 10 most frequently purchased product in each category
-
+<p>
 * (6.3) JOIN events with geodata
 
 Put data from http://dev.maxmind.com/geoip/geoip2/geolite2/ to HIVE table
