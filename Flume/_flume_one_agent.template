@@ -1,0 +1,88 @@
+
+# Name the components on this agent
+a1.sources = r1 rb1 ra1
+a1.sinks = k1 kb1 ka1
+a1.channels = c1 cb1 ca1
+
+
+#
+# Product
+#
+
+# Describe/configure the source
+a1.sources.r1.channels = c1
+a1.sources.r1.type = a.b.CustomSourceTail
+a1.sources.r1.myfile = /home/cloudera/my/input3000.txt
+a1.sources.r1.mycheckdate = 1
+
+# Describe the sink
+a1.sinks.k1.type = hdfs
+a1.sinks.k1.hdfs.path = /user/cloudera/product/dt=%Y-%m-%d
+a1.sinks.k1.hdfs.rollInterval = 0
+a1.sinks.k1.hdfs.rollCount = 10000
+a1.sinks.k1.hdfs.rollSize = 0
+a1.sinks.k1.hdfs.threadsPoolSize = 20
+a1.sinks.k1.hdfs.callTimeout = 20000
+a1.sinks.k1.hdfs.fileType = DataStream
+
+# Use a channel which buffers events in memory
+a1.channels.c1.type = memory
+a1.channels.c1.capacity = 10000
+a1.channels.c1.transactionCapacity = 1000
+
+# Bind the source and sink to the channel
+a1.sinks.k1.channel = c1
+
+
+#
+# CountryName
+#
+
+# Describe/configure the source
+a1.sources.rb1.channels = cb1
+a1.sources.rb1.type = a.b.CustomSourceTail
+a1.sources.rb1.myfile = /home/cloudera/my/CountryName.csv
+a1.sources.rb1.mycheckdate = 0
+
+# Describe the sink
+a1.sinks.kb1.type = hdfs
+a1.sinks.kb1.hdfs.path = /user/cloudera/CountryName
+a1.sinks.kb1.hdfs.rollInterval = 0
+a1.sinks.kb1.hdfs.rollCount = 10000
+a1.sinks.kb1.hdfs.rollSize = 0
+a1.sinks.kb1.hdfs.fileType = DataStream
+
+# Use a channel which buffers events in memory
+a1.channels.cb1.type = memory
+a1.channels.cb1.capacity = 10000
+a1.channels.cb1.transactionCapacity = 1000
+
+# Bind the source and sink to the channel
+a1.sinks.kb1.channel = cb1
+
+
+#
+# CountryIP
+#
+
+# Describe/configure the source
+a1.sources.ra1.channels = ca1
+a1.sources.ra1.type = a.b.CustomSourceTail
+a1.sources.ra1.myfile = /home/cloudera/my/CountryIP.csv
+a1.sources.ra1.mycheckdate = 0
+
+# Describe the sink
+a1.sinks.ka1.type = hdfs
+a1.sinks.ka1.hdfs.path = /user/cloudera/CountryIP
+a1.sinks.ka1.hdfs.rollInterval = 0
+a1.sinks.ka1.hdfs.rollCount = 10000
+a1.sinks.ka1.hdfs.rollSize = 0
+a1.sinks.ka1.hdfs.fileType = DataStream
+
+# Use a channel which buffers events in memory
+a1.channels.ca1.type = memory
+a1.channels.ca1.capacity = 10000
+a1.channels.ca1.transactionCapacity = 1000
+
+# Bind the source and sink to the channel
+a1.sinks.ka1.channel = ca1
