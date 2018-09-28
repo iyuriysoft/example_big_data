@@ -1,4 +1,6 @@
-# test_big_data_project
+# test_big_data
+
+Decide tasks using Flume, Hive
 
 
 # 1. Implement Random Events producer
