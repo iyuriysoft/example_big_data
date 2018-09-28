@@ -3,7 +3,7 @@
 Decide tasks using Flume, Hive
 
 
-# 1. Implement Random Events producer
+## 1. Implement Random Events producer
 
 Use Java, Scala or Python to implement event producer. Each event message describes single product purchase.
 Producer should connect to Flume socket (see below) and send events in a CSV format, one event per line.
