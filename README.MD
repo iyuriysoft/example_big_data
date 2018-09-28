@@ -1,4 +1,4 @@
-# test_big_data
+# Flume, Hive examples
 
 Decide tasks using Flume, Hive
 
