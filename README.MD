@@ -125,11 +125,3 @@ create temporary function getIP as 'a.udf.GetIP';"
 ```bash
 > hive -f select_63.sql
 ```
-
-
-
-## 4. Spark Core
-
-Tasks are implemented using Spark in three different approaches: RDD, Dataframe, SQL
-
-Producer -> Flume -> HDFS -> Spark -> RDBMS
