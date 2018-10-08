@@ -19,3 +19,22 @@ from countryip tb;
 SELECT t2.sump, t3.geoname_id, t4.country_name FROM vproduct t2, vcountryip t3 
 INNER JOIN countryName t4 ON t4.geoname_id = t3.geoname_id 
 WHERE t2.iip < t3.endip AND t2.iip > t3.startip LIMIT 10;
+
+
+
+-- test
+
+SELECT t2.sump, t3.geoname_id FROM vproduct t2, vcountryip t3 
+WHERE t2.iip < t3.endip AND t2.iip > t3.startip LIMIT 10;
+
+SELECT t2.sump, t3.geoname_id FROM vproduct t2, 
+(select tb.geoname_id, getStartIP(tb.network) as startip, getEndIP(tb.network) as endip
+from countryip tb) t3  WHERE t2.iip < t3.endip AND t2.iip > t3.startip LIMIT 10;
+
+SELECT t2.sump, t3.geoname_id FROM
+ (select tb.ip, getIP(tb.ip) as iip, tb.p as sump
+  from (SELECT t.ip, sum(t.price) p FROM product t group by t.ip order by p desc limit 10) tb limit 10) t2, 
+ (select tb.geoname_id, getStartIP(tb.network) as startip, getEndIP(tb.network) as endip
+  from countryip tb) t3  
+ WHERE t2.iip < t3.endip AND t2.iip > t3.startip LIMIT 10;
+
