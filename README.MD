@@ -54,9 +54,9 @@ Geo data from http://dev.maxmind.com/geoip/geoip2/geolite2/
 
 or from this:
 
-[input3000.txt](https://github.com/iyuriysoft/big_data_snippets/blob/master/input3000.txt),
-[CountryIP.csv](https://github.com/iyuriysoft/big_data_snippets/blob/master/CountryIP.csv),
-[CountryName.csv](https://github.com/iyuriysoft/big_data_snippets/blob/master/CountryName.csv)
+[input3000.txt](https://github.com/iyuriysoft/big_data_sketch/blob/master/InputData/input3000.txt),
+[CountryIP.csv](https://github.com/iyuriysoft/big_data_sketch/blob/master/InputData/CountryIP.csv),
+[CountryName.csv](https://github.com/iyuriysoft/big_data_sketch/blob/master/InputData/CountryName.csv)
 
 
 Start Flume like this:
