@@ -17,16 +17,16 @@ from countryip tb;
 
 -- 3 create extra view with link product - geoid
 create view if not exists vproduct_geo as 
-SELECT tp.price, tp.ip, tc.geoname_id
-FROM (select price, ip, iip from vproduct) tp,
+SELECT tp.sump, tp.ip, tc.geoname_id
+FROM (select sump, ip, iip from vproduct) tp,
 (select geoname_id, startip, endip from vcountryip) tc
-WHERE tp.iip < tc.endip AND tp.iip > tc.startip ORDER BY tc.geoname_id
+WHERE tp.iip < tc.endip AND tp.iip > tc.startip ORDER BY tc.geoname_id;
 
 
 -- 6.3 task: show country name
 DROP TABLE IF EXISTS table63;
 CREATE TABLE table63 AS
-SELECT SUM(t.price) as summ, count(*) as cnt, t.geoname_id, tcn.country_name
+SELECT SUM(t.sump) as summ, count(*) as cnt, t.geoname_id, tcn.country_name
 FROM vproduct_geo t
 INNER JOIN countryname tcn ON t.geoname_id = tcn.geoname_id
-GROUP BY t.geoname_id, tcn.country_name ORDER BY summ DESC LIMIT 10
+GROUP BY t.geoname_id, tcn.country_name ORDER BY summ DESC LIMIT 10;
