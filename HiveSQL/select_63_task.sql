@@ -28,5 +28,5 @@ DROP TABLE IF EXISTS table63;
 CREATE TABLE table63 AS
 SELECT SUM(t.price) as summ, count(*) as cnt, t.geoname_id, tcn.country_name
 FROM vproduct_geo t
-INNER JOIN countryname tcn ON t.geoname_id = tcn.geoname_id "
+INNER JOIN countryname tcn ON t.geoname_id = tcn.geoname_id
 GROUP BY t.geoname_id, tcn.country_name ORDER BY summ DESC LIMIT 10
