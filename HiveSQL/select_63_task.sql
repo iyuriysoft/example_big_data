@@ -20,7 +20,7 @@ create view if not exists vproduct_geo as
 SELECT tp.sump, tp.ip, tc.geoname_id
 FROM (select sump, ip, iip from vproduct) tp,
 (select geoname_id, startip, endip from vcountryip) tc
-WHERE tp.iip < tc.endip AND tp.iip > tc.startip ORDER BY tc.geoname_id;
+WHERE tp.iip < tc.endip AND tp.iip > tc.startip;
 
 
 -- 6.3 task: show country name
