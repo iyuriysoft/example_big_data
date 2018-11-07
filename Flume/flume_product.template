@@ -26,7 +26,7 @@ a1.sinks.k2.hdfs.rollInterval = 0
 a1.sinks.k2.hdfs.batchSize = 1000
 a1.sinks.k2.hdfs.rollSize = 0
 a1.sinks.k2.hdfs.rollCount = 1000
-a1.sinks.k4.hdfs.threadsPoolSize = 20
+a1.sinks.k2.hdfs.threadsPoolSize = 20
 
 a1.sinks.k3.type = file_roll
 a1.sinks.k3.sink.directory = /home/cloudera/my

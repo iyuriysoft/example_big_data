@@ -2,25 +2,32 @@ package a.udf;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Map.Entry;
 import java.util.NavigableMap;
 import java.util.TreeMap;
-import java.util.Map.Entry;
 
 import org.apache.commons.lang3.tuple.Pair;
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.FileSystem;
+import org.apache.hadoop.fs.Path;
 
 public enum IP2GeoId {
 
     INSTANCE;
-    
+
     private NavigableMap<Long, Pair<Long, Long>> map = new TreeMap<Long, Pair<Long, Long>>();
-    
+
     public void init(String name) throws FileNotFoundException, IOException {
-        //System.out.println("init(); Working Directory : " + System.getProperty("user.dir"));
+
         if (!map.isEmpty())
             return;
-        try (BufferedReader br = new BufferedReader(new FileReader(name));) {
+
+        Configuration conf = new Configuration();
+        Path pt = new Path(name);
+        FileSystem fs = FileSystem.get(conf);
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(fs.open(pt)));) {
             String line = br.readLine();
             while (line != null) {
                 String[] ar = line.split(",");
@@ -37,7 +44,6 @@ public enum IP2GeoId {
                 line = br.readLine();
             }
         }
-        System.out.println("init(); OK ");
     }
 
     public Long ip2geo(Long v) {

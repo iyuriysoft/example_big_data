@@ -1,12 +1,15 @@
 -- using UDF (change according your jar-name)
 delete jar /home/cloudera/my/b-0.0.1.jar;
 add jar /home/cloudera/my/b-0.0.1.jar;
-create temporary function getGeoId as 'a.udf.GetGeoIdFromIP';
+create temporary function getGeoIdFromIP as 'a.udf.GetGeoIdFromIP';
 
--- 6.3
+DROP TABLE IF EXISTS tproduct;
+CREATE TABLE IF NOT EXISTS tproduct AS 
+select price, ip, GetGeoIdFromIP(ip, "hdfs:///user/cloudera/CountryIP.csv") as geo_id from product;
+
 DROP TABLE IF EXISTS table63;
-CREATE TABLE table63 AS
-SELECT SUM(tp.price) as summ, count(*) as cnt, tcn.geoname_id, tcn.country_name
-FROM (SELECT price, GetGeoIdFromIP(ip, "CountryIP.csv") as geo_id FROM product) tp
-INNER JOIN country_name tcn ON tp.geo_id = tcn.geoname_id
-GROUP BY tcn.geoname_id, tcn.countryname ORDER BY summ DESC LIMIT 10
+CREATE TABLE IF NOT EXISTS table63 AS 
+select sum(price) su, geo_id, tcn.country_name
+from tproduct left join countryname tcn on tcn.geoname_id = geo_id
+group by geo_id, tcn.country_name order by su desc limit 10;
+
