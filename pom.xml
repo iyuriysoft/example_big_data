@@ -8,11 +8,6 @@
 	<version>0.0.1</version>
 	<packaging>jar</packaging>
 
-	<!--<repositories> <repository> <id>maven-restlet</id> <name>Public online 
-		Restlet repository</name> <url>http://maven.restlet.org</url> </repository> 
-		</repositories> <name>b</name> <url>http://maven.apache.org</url> <url>http://maven.restlet.org</url> 
-		<url>http://central.maven.org/maven2/</url> -->
-
 	<repositories>
 		<repository>
 			<id>maven_jdo2</id>
@@ -24,16 +19,12 @@
 			<name>repository apache</name>
 			<url>http://maven.apache.org</url>
 		</repository>
-        <!-- <repository> <id>maven</id> <name>repository</name> <url>http://central.maven.org</url> 
-            </repository> -->
-        <!--<repository> <id>scala-tools</id> <url>https://oss.sonatype.org/content/groups/scala-tools</url> 
-            </repository> -->
-		<!--<repository> <id>apache</id> <url>https://repository.apache.org/content/repositories/releases</url> 
-			</repository> -->
 	</repositories>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.7</maven.compiler.source>
+        <maven.compiler.target>1.7</maven.compiler.target>
 		<flume.version>1.6.0</flume.version>
 		<hadoop.version>0.20.2</hadoop.version>
 		<hive.version>0.10.0</hive.version>
@@ -44,6 +35,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
+				<version>3.1.0</version>
 				<configuration>
 					<archive>
 						<manifest>
@@ -59,15 +51,16 @@
 	</build>
 
 	<dependencies>
-		<!-- <dependency> <groupId>com.opencsv</groupId> <artifactId>opencsv</artifactId> 
-			<version>4.0</version> </dependency> <dependency> <groupId>org.apache.spark</groupId> 
-			<artifactId>spark-streaming_2.10</artifactId> <version>1.5.2</version> </dependency> -->
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.8.1</version>
+		</dependency>
 		<dependency>
 			<groupId>org.apache.hadoop</groupId>
 			<artifactId>hadoop-core</artifactId>
 			<version>${hadoop.version}</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/javax.jdo/jdo2-api -->
 		<dependency>
 			<groupId>javax.jdo</groupId>
 			<artifactId>jdo2-api</artifactId>
