@@ -17,7 +17,7 @@ public enum IP2GeoId {
     private NavigableMap<Long, Pair<Long, Long>> map = new TreeMap<Long, Pair<Long, Long>>();
     
     public void init(String name) throws FileNotFoundException, IOException {
-        System.out.println("init(); Working Directory : " + System.getProperty("user.dir"));
+        //System.out.println("init(); Working Directory : " + System.getProperty("user.dir"));
         if (!map.isEmpty())
             return;
         try (BufferedReader br = new BufferedReader(new FileReader(name));) {
