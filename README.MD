@@ -42,8 +42,15 @@ mydateindex - index with date data for 'timestamp' if present otherwise current 
 Start Flume like this:
 
 ```bash
-> bin/flume-ng agent -n a1 -c conf -f conf/flume_product.template -Dflume.root.logger=TRACE,console
+> flume-ng agent -n a1 -c conf -f flume_product.template -Dflume.root.logger=TRACE,console --classpath b-0.0.1.jar
 ```
+
+or using single template for all tables:
+
+```bash
+> flume-ng agent -n a1 -c conf -f _flume_diff_agents.template -Dflume.root.logger=TRACE,console --classpath b-0.0.1.jar
+```
+
 
 ### Pulls data from local file to HDFS
 
@@ -62,14 +69,22 @@ or from this:
 Start Flume like this:
 
 ```bash
-> bin/flume-ng agent -n a1 -c conf -f conf/flume_countryIP.template -Dflume.root.logger=TRACE,console
-> bin/flume-ng agent -n a1 -c conf -f conf/flume_countryName.template -Dflume.root.logger=TRACE,console
+> flume-ng agent -n a1 -c conf -f flume_countryIP.template -Dflume.root.logger=TRACE,console --classpath b-0.0.1.jar
+> flume-ng agent -n a1 -c conf -f flume_countryName.template -Dflume.root.logger=TRACE,console --classpath b-0.0.1.jar
 ```
+
+or:
+
+```bash
+> flume-ng agent -n a2 -c conf -f _flume_diff_agents.template -Dflume.root.logger=TRACE,console --classpath b-0.0.1.jar
+> flume-ng agent -n a3 -c conf -f _flume_diff_agents.template -Dflume.root.logger=TRACE,console --classpath b-0.0.1.jar
+```
+
 
 In other words, we do trasformation:
 
 <p>
-Input Data:
+Input Data (Local):
 
 /home/cloudera/my/input3000.txt<br>
 /home/cloudera/my/CountryIP.csv<br>
@@ -111,9 +126,7 @@ Tasks:
 ```bash
 > hive -e "delete jar /home/cloudera/my/b-0.0.1.jar;
 add jar /home/cloudera/my/b-0.0.1.jar;
-create temporary function getStartIP as 'a.udf.GetStartIP';
-create temporary function getEndIP as 'a.udf.GetEndIP';
-create temporary function getIP as 'a.udf.GetIP';"
+create temporary function getStartIP as 'a.udf.GetGeoIdFromIP';
 ```
 <p>
 * Start tasks:

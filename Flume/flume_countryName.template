@@ -35,4 +35,3 @@ a1.channels.c2.transactionCapacity = 10000
 # Bind the source and sink to the channel
 a1.sinks.k1.channel = c1
 a1.sinks.k2.channel = c2
-

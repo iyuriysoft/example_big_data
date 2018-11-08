@@ -11,3 +11,7 @@ SELECT tp.name, tp.category, count(*) as cnt FROM product tp inner join
 (select category, count(*) as c from product group by category order by c desc) tcat
 ON tp.category = tcat.category
 GROUP BY tp.name, tp.category ORDER BY cnt DESC LIMIT 10;
+
+-- show
+select * from table51;
+select * from table52;

@@ -13,7 +13,7 @@ a1.channels = c1 cb1 ca1
 a1.sources.r1.channels = c1
 a1.sources.r1.type = a.b.CustomSourceTail
 a1.sources.r1.myfile = /home/cloudera/my/input3000.txt
-a1.sources.r1.mycheckdate = 1
+a1.sources.r1.mydateindex = 2
 
 # Describe the sink
 a1.sinks.k1.type = hdfs
@@ -21,6 +21,7 @@ a1.sinks.k1.hdfs.path = /user/cloudera/product/dt=%Y-%m-%d
 a1.sinks.k1.hdfs.rollInterval = 0
 a1.sinks.k1.hdfs.rollCount = 10000
 a1.sinks.k1.hdfs.rollSize = 0
+a1.sinks.k1.hdfs.batchSize = 1000
 a1.sinks.k1.hdfs.threadsPoolSize = 20
 a1.sinks.k1.hdfs.callTimeout = 20000
 a1.sinks.k1.hdfs.fileType = DataStream
@@ -42,7 +43,6 @@ a1.sinks.k1.channel = c1
 a1.sources.rb1.channels = cb1
 a1.sources.rb1.type = a.b.CustomSourceTail
 a1.sources.rb1.myfile = /home/cloudera/my/CountryName.csv
-a1.sources.rb1.mycheckdate = 0
 
 # Describe the sink
 a1.sinks.kb1.type = hdfs
@@ -50,6 +50,7 @@ a1.sinks.kb1.hdfs.path = /user/cloudera/CountryName
 a1.sinks.kb1.hdfs.rollInterval = 0
 a1.sinks.kb1.hdfs.rollCount = 10000
 a1.sinks.kb1.hdfs.rollSize = 0
+a1.sinks.kb1.hdfs.batchSize = 1000
 a1.sinks.kb1.hdfs.fileType = DataStream
 
 # Use a channel which buffers events in memory
@@ -75,8 +76,9 @@ a1.sources.ra1.mycheckdate = 0
 a1.sinks.ka1.type = hdfs
 a1.sinks.ka1.hdfs.path = /user/cloudera/CountryIP
 a1.sinks.ka1.hdfs.rollInterval = 0
-a1.sinks.ka1.hdfs.rollCount = 10000
+a1.sinks.ka1.hdfs.rollCount = 100000
 a1.sinks.ka1.hdfs.rollSize = 0
+a1.sinks.ka1.hdfs.batchSize = 1000
 a1.sinks.ka1.hdfs.fileType = DataStream
 
 # Use a channel which buffers events in memory

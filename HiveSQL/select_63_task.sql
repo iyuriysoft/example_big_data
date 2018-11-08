@@ -11,5 +11,8 @@ DROP TABLE IF EXISTS table63;
 CREATE TABLE IF NOT EXISTS table63 AS 
 select sum(price) su, geo_id, tcn.country_name
 from tproduct left join countryname tcn on tcn.geoname_id = geo_id
+where geo_id != 0
 group by geo_id, tcn.country_name order by su desc limit 10;
 
+-- show
+select * from table63;
