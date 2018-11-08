@@ -12,6 +12,7 @@ import org.apache.commons.lang3.tuple.Pair;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
+import a.udf.CIDRUtils;
 
 public enum IP2GeoId {
 
@@ -24,6 +25,7 @@ public enum IP2GeoId {
         if (!map.isEmpty())
             return;
 
+        // try (BufferedReader br = new BufferedReader(new FileReader(name));) {
         Configuration conf = new Configuration();
         Path pt = new Path(name);
         FileSystem fs = FileSystem.get(conf);

@@ -7,6 +7,7 @@ import org.apache.hadoop.hive.ql.exec.Description;
 import org.apache.hadoop.hive.ql.exec.UDF;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
+import a.udf.CIDRUtils;
 
 @Description(name = "getGeoIdFromIP", value = "long _FUNC_(str) - get geoId from ip", extended = "Example:\n  > SELECT getGeoIdFromIP(ip) FROM a;")
 public class GetGeoIdFromIP extends UDF {

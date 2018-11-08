@@ -114,6 +114,8 @@ Tasks:
 - (6.3) Select top 10 countries with the highest money spending
   Note: Hive UDF might help you to join events with IP geo data
 
+### Start tasks
+
 <p>
 * Create tables from HDFS
 
@@ -137,4 +139,10 @@ create temporary function getStartIP as 'a.udf.GetGeoIdFromIP';
 
 ```bash
 > hive -f select_63.sql
+```
+
+or we can just run full query with creating & selecting:
+
+```bash
+> hive -f full_query.sql
 ```
